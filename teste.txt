@@ -1,0 +1,16 @@
+HTTP1.1 200 OK
+Server Apache1.3.27 (Unix)  (Red-HatLinux)
+Last-Modified Wed, 08 Jan 2003 231155 GMT
+Connection close
+Content-Type texthtml; charset=UTF-8
+
+!DOCTYPE html
+html
+body
+
+h1Título 1h1
+
+pOlá mundop
+
+body
+html
