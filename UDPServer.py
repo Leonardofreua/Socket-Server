@@ -10,7 +10,7 @@ class UDPServerConnection(object):
     def __init__(self, host, port):
         self.host = host
         self.port = port
-        self.content_dir = '/home/lfreua/Downloads' #Directory where webpage files are stored
+        self.content_dir = '/' #Directory where webpage files are stored
 
     def run(self):
 
