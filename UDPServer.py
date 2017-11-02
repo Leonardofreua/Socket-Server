@@ -5,9 +5,6 @@ import threading
 import signal
 import time
 
-#http://blog.wachowicz.eu/?p=256
-#https://gist.github.com/joncardasis/cc67cfb160fa61a0457d6951eff2aeae
-
 class UDPServerConnection:
 
     def __init__(self, host = '127.0.0.1', port=8080):
