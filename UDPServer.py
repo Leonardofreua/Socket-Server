@@ -82,22 +82,22 @@ class UDPServerConnection:
 			- client: socket client from accept()
 			- address: socket address from accept()
 		"""
-        PACKET_SIZE = 1024
-
         while True:
-            data = client.recv(PACKET_SIZE).decode() #Receive data packet from client and decode
+            data = client.makefile()
 
             if not data: break
 
-            request_method = data.split(' ')[0]
+            firstLine = data.readline()
+
+            request_method = firstLine.split(' ')[0]
             print("Method: {m}".format(m=request_method))
-            print("Request Body: {b}".format(b=data))
+            print("Request Body: {b}".format(b=firstLine))
 
             response = ''
 
             if request_method == "GET" or request_method == "HEAD":
 				#Ex.: "GET /index.html" split on space
-                file_requested = data.split(' ')[1]
+                file_requested = firstLine.split(' ')[1]
 
 				#if get has parameters ('?'), ignore them
                 file_requested = file_requested.split('?')[0]
@@ -109,6 +109,8 @@ class UDPServerConnection:
                 print("Sending web page [{wp}]".format(wp=filepath_to_send))
 
                 contentSize = 0
+
+                secondLine = data.readline()
 
 				#Load and Send files content
                 try:
